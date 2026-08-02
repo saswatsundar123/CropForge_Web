@@ -205,12 +205,17 @@
     const runIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 100));
 
     // Stagger loading to prevent massive main-thread CPU spikes
+    // On mobile, stagger even more to allow the UI to paint first
+    const isMobile = window.innerWidth < 768;
+    const initialDelay = isMobile ? 1500 : 500;
+    const secondDelay = isMobile ? 2000 : 800;
+
     setTimeout(() => {
       runIdle(() => {
         loadFrame(crop);
-        setTimeout(() => runIdle(() => loadFrame(forge)), 800);
+        setTimeout(() => runIdle(() => loadFrame(forge)), secondDelay);
       });
-    }, 500);
+    }, initialDelay);
   });
 
 })();
