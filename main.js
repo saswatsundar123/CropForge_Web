@@ -195,13 +195,22 @@
      DEFER HEAVY ASCII FRAMES
      ───────────────────────────────────────────── */
   window.addEventListener('load', () => {
-    // Delay setting iframe sources by 1500ms to allow LCP and main-thread to clear
+    const crop = document.getElementById('ascii-crop');
+    const forge = document.getElementById('ascii-forge');
+    
+    const loadFrame = (el) => {
+      if (el && el.dataset.src) el.src = el.dataset.src;
+    };
+
+    const runIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 100));
+
+    // Stagger loading to prevent massive main-thread CPU spikes
     setTimeout(() => {
-      const crop = document.getElementById('ascii-crop');
-      const forge = document.getElementById('ascii-forge');
-      if (crop && crop.dataset.src) crop.src = crop.dataset.src;
-      if (forge && forge.dataset.src) forge.src = forge.dataset.src;
-    }, 1500);
+      runIdle(() => {
+        loadFrame(crop);
+        setTimeout(() => runIdle(() => loadFrame(forge)), 800);
+      });
+    }, 500);
   });
 
 })();
