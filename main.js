@@ -204,11 +204,13 @@
 
     const runIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 100));
 
-    // Stagger loading to prevent massive main-thread CPU spikes
-    // On mobile, stagger even more to allow the UI to paint first
+    // Desktop: wait 3s so the page is interactive before any heavy ASCII work.
+    // Mobile: wait 1.5s (screen is smaller, quality is lower, still heavy).
+    // Stagger Forge 4s after Crop on desktop so back-to-back evaluations
+    // don't compound into a 30s TBT spike.
     const isMobile = window.innerWidth < 768;
-    const initialDelay = isMobile ? 1500 : 500;
-    const secondDelay = isMobile ? 2000 : 800;
+    const initialDelay = isMobile ? 1500 : 3000;
+    const secondDelay  = isMobile ? 2000 : 4000;
 
     setTimeout(() => {
       runIdle(() => {

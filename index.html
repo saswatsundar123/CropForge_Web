@@ -1,14 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTQW5E33HN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MTQW5E33HN');
-  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +42,9 @@
   <link rel="preload" href="Google_Sans_Code/GoogleSansCode-Italic-VariableFont_MONO,wght.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="CropForge_assets/CropForge_Logo.webp" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://api.github.com">
-  <link rel="stylesheet" href="style.css?v=14">
+  <!-- Non-render-blocking stylesheet: browser loads it in background -->
+  <link rel="preload" href="style.css?v=14" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="style.css?v=14"></noscript>
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTQW5E33HN"></script>
