@@ -28,7 +28,7 @@
   function placeBubble() {
     const br = lightBtn.getBoundingClientRect();
     bubble.style.right = (window.innerWidth - br.right) + 'px';
-    bubble.style.top = (br.bottom + window.scrollY + 10) + 'px';
+    bubble.style.top = (br.bottom + 10) + 'px';
     bubble.style.left = 'auto';
   }
 
@@ -189,5 +189,19 @@
       .then(d => set('gh-release', d.tag_name))
       .catch(() => { /* keep v1.0.0 default */ });
   })();
+
+
+  /* ─────────────────────────────────────────────
+     DEFER HEAVY ASCII FRAMES
+     ───────────────────────────────────────────── */
+  window.addEventListener('load', () => {
+    // Delay setting iframe sources by 1500ms to allow LCP and main-thread to clear
+    setTimeout(() => {
+      const crop = document.getElementById('ascii-crop');
+      const forge = document.getElementById('ascii-forge');
+      if (crop && crop.dataset.src) crop.src = crop.dataset.src;
+      if (forge && forge.dataset.src) forge.src = forge.dataset.src;
+    }, 1500);
+  });
 
 })();

@@ -24,8 +24,8 @@
   --line: #1e1e1e;
   --line2: #2a2a2a;
   --fg: #e8e8e8;
-  --fg2: #b0b0b0;
-  --dim: #585858;
+  --fg2: #d4d4d4;
+  --dim: #999999;
   --accent: #4a9eff;
   --grn: #3fb950;
   --warn: #d29922;
@@ -167,7 +167,10 @@ code {
 
 .chrome .file {
   color: var(--dim);
-  flex-shrink: 0;
+  flex-shrink: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chrome-nav {
