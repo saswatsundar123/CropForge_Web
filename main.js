@@ -199,18 +199,21 @@
     const forge = document.getElementById('ascii-forge');
     
     const loadFrame = (el) => {
-      if (el && el.dataset.src) el.src = el.dataset.src;
+      if (el && el.dataset.src) {
+        el.addEventListener('load', () => {
+          if (el.parentElement) el.parentElement.classList.remove('is-loading');
+        });
+        el.src = el.dataset.src;
+      }
     };
 
     const runIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 100));
 
-    // Desktop: wait 3s so the page is interactive before any heavy ASCII work.
-    // Mobile: wait 1.5s (screen is smaller, quality is lower, still heavy).
-    // Stagger Forge 4s after Crop on desktop so back-to-back evaluations
-    // don't compound into a 30s TBT spike.
+    // Desktop: wait 5s to balance performance and aesthetics.
+    // Mobile: wait 1.5s.
     const isMobile = window.innerWidth < 768;
-    const initialDelay = isMobile ? 1500 : 3000;
-    const secondDelay  = isMobile ? 2000 : 4000;
+    const initialDelay = isMobile ? 1500 : 5000;
+    const secondDelay  = isMobile ? 2000 : 200; // stagger forge slightly after crop
 
     setTimeout(() => {
       runIdle(() => {

@@ -1,0 +1,14 @@
+# CropForge
+> Open-source crop simulation runtime. Built for computational agriculture.
+
+CropForge is a Python-based runtime (Python 3.12+) developed in collaboration with ICAR-IARI Jharkhand. It enables researchers to simulate crop growth, yield, and environmental interactions under various conditions.
+
+## License
+CropForge is open-source software licensed under the MIT License.
+
+## Links
+- Homepage: https://cropforge.org
+- Repository: https://github.com/saswatsundar123/CropForge_Web
+
+## Data
+This site primarily serves as a landing page for the CropForge project. For actual API documentation or codebase details, please refer to the GitHub repository.
