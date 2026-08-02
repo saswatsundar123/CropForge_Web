@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTQW5E33HN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MTQW5E33HN');
+  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CropForge — Python-first crop simulation runtime</title>
+  <meta name="description" content="CropForge is an open-source, code-first crop simulation runtime for agricultural researchers. Define farms in Python — CropForge handles time-stepping, terrain physics, sediment dynamics, Parquet logging, and a WebGL 3D dashboard. Built at ICAR-IARI Jharkhand by Saswat Sundar Rath.">
+  <meta name="author" content="Saswat Sundar Rath">
+  <meta name="keywords" content="crop simulation, agricultural modelling, Python, FAO-56, terrain engine, CropForge, ICAR, open source">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cropforge.org/">
+  <meta property="og:title" content="CropForge — Python-first crop simulation runtime">
+  <meta property="og:description" content="Define your farm in Python. CropForge handles time-stepping, terrain physics, sediment dynamics, Parquet logging, and WebGL 3D visualisation.">
+  <meta property="og:image" content="https://cropforge.org/CropForge_OG_Card.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CropForge — Python-first crop simulation runtime">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CropForge — Python-first crop simulation runtime">
+  <meta name="twitter:description" content="Define your farm in Python. CropForge handles time-stepping, terrain physics, sediment dynamics, Parquet logging, and WebGL 3D visualisation.">
+  <meta name="twitter:image" content="https://cropforge.org/CropForge_OG_Card.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+  <meta name="theme-color" content="#000000">
+
+  <link rel="stylesheet" href="style.css?v=14">
+  <link rel="stylesheet" href="gradient_background.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MTQW5E33HN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MTQW5E33HN');
+  </script>
+</head>
+<body>
+
+<!-- ── Editor chrome / nav ── -->
+<div class="chrome">
+  <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+  <span class="file">~/cropforge — README.md</span>
+  <nav class="chrome-nav" aria-label="Site navigation">
+    <a href="#install">install</a>
+    <a href="#quickstart">quickstart</a>
+    <a href="#features">features</a>
+    <a href="#docs">docs</a>
+    <a href="#changelog">changelog</a>
+    <a href="#github">stats</a>
+    <a href="about.html">about</a>
+    <a href="https://cropforge.readthedocs.io" target="_blank" rel="noopener">api ↗</a>
+    <a href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">github ↗</a>
+  </nav>
+  <button id="lightbtn" class="lightbtn" type="button">☀ light mode</button>
+</div>
+
+<!-- ── Hero ── -->
+<header>
+  <div class="hero-grid">
+
+    <!-- ASCII pair: Crop (green) + Forge (blue) = CropForge -->
+    <div class="ascii-row" role="img" aria-label="Interactive ASCII art spelling CropForge — move your cursor to interact">
+      <div class="ascii-wrap" id="wrap-crop">
+        <iframe
+          class="ascii-frame"
+          id="ascii-crop"
+          src="CropForge_assets/Ascii_elements/Crop.html"
+          title="Crop — interactive ASCII art"
+          scrolling="no"
+          loading="eager"
+          tabindex="-1"
+        ></iframe>
+      </div>
+      <div class="ascii-wrap" id="wrap-forge">
+        <iframe
+          class="ascii-frame"
+          id="ascii-forge"
+          src="CropForge_assets/Ascii_elements/Forge.html"
+          title="Forge — interactive ASCII art"
+          scrolling="no"
+          loading="eager"
+          tabindex="-1"
+        ></iframe>
+      </div>
+    </div><!-- /.ascii-row -->
+
+    <!-- Hero info -->
+    <div class="hero-right">
+      <div class="hero-text">
+        <p class="label">v1.0.0</p>
+
+        <div id="hero-term" aria-live="polite" aria-label="Python REPL session demonstrating CropForge"></div>
+
+        <p class="tag">Open-source crop simulation runtime.<br>Built for computational agriculture.</p>
+
+        <p class="sub">MIT · Python 3.12+ · ICAR-IARI Jharkhand</p>
+
+        <div class="cta">
+          <div class="install-cmd">
+            <span class="p">$</span>&nbsp;pip install cropforge
+            <button class="copy-btn" data-copy="pip install cropforge" aria-label="Copy install command"></button>
+          </div>
+          <a class="btn" href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+
+      <img class="hero-logo" src="CropForge_assets/CropForge_Logo.png" alt="CropForge logo">
+    </div>
+
+  </div>
+</header>
+
+<!-- ── Install ── -->
+<section id="install">
+  <div class="wrap">
+    <p class="label">install</p>
+    <h2>One command to start.</h2>
+
+    <div class="term">
+      <span class="c"># PyPI (recommended)</span><br>
+      <span class="p">$</span> pip install cropforge&nbsp;<button class="copy-btn" data-copy="pip install cropforge" aria-label="Copy"></button>
+    </div>
+
+    <div class="pkg-grid">
+      <div>
+        <h3>uv</h3>
+        <div class="term term-sm">
+          <span class="p">$</span> uv add cropforge&nbsp;<button class="copy-btn" data-copy="uv add cropforge" aria-label="Copy uv command"></button>
+        </div>
+      </div>
+      <div>
+        <h3>poetry</h3>
+        <div class="term term-sm">
+          <span class="p">$</span> poetry add cropforge&nbsp;<button class="copy-btn" data-copy="poetry add cropforge" aria-label="Copy poetry command"></button>
+        </div>
+      </div>
+      <div>
+        <h3>export extras</h3>
+        <div class="term term-sm">
+          <span class="p">$</span> pip install cropforge[export]&nbsp;<button class="copy-btn" data-copy="pip install cropforge[export]" aria-label="Copy export command"></button>
+        </div>
+      </div>
+      <div>
+        <h3>verify</h3>
+        <div class="term term-sm">
+          <span class="p">&gt;&gt;&gt;</span> import cropforge<br>
+          <span class="p">&gt;&gt;&gt;</span> cropforge.version()<br>
+          <span class="grn">'v1.0.0'</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Quick Start ── -->
+<section id="quickstart">
+  <div class="wrap">
+    <h2>Define your farm in Python.</h2>
+
+    <div class="code-block">
+      <div class="bar">
+        <span>farm.py</span>
+        <button class="copy-btn" id="qs-copy" data-copy="from cropforge import Farm, Field, Crop, Soil, Weather, Terrain
+from cropforge.plugins import StandardWheat
+
+farm  = Farm(name='ICAR-Plot', location=(28.6, 77.2))
+field = Field(name='Plot A', rows=20, cols=30, area_ha=2.4)
+field.set_crop(Crop(species='wheat'))
+field.set_weather(Weather.from_csv('data/weather.csv'))
+field.set_soil(Soil.from_csv('data/soil.csv', apply='uniform'))
+field.set_terrain(Terrain.procedural(rows=20, cols=30, resolution_m=0.5))
+farm.add_field(field)
+
+field.use_plugin(StandardWheat)
+farm.use_physics(et0=True, radiation=True, erosion=True, sediment_transport=True)
+
+farm.run(days=90)
+farm.visualize()  # opens http://localhost:7860" aria-label="Copy code"></button>
+      </div>
+<pre><span class="kw">from</span> cropforge <span class="kw">import</span> Farm, Field, Crop, Soil, Weather, Terrain
+<span class="kw">from</span> cropforge.plugins <span class="kw">import</span> StandardWheat
+
+farm  = <span class="fn">Farm</span>(name=<span class="str">'ICAR-Plot'</span>, location=(<span class="num">28.6</span>, <span class="num">77.2</span>))
+field = <span class="fn">Field</span>(name=<span class="str">'Plot A'</span>, rows=<span class="num">20</span>, cols=<span class="num">30</span>, area_ha=<span class="num">2.4</span>)
+field.<span class="fn">set_crop</span>(<span class="fn">Crop</span>(species=<span class="str">'wheat'</span>))
+field.<span class="fn">set_weather</span>(<span class="fn">Weather.from_csv</span>(<span class="str">'data/weather.csv'</span>))
+field.<span class="fn">set_soil</span>(<span class="fn">Soil.from_csv</span>(<span class="str">'data/soil.csv'</span>, apply=<span class="str">'uniform'</span>))
+field.<span class="fn">set_terrain</span>(<span class="fn">Terrain.procedural</span>(rows=<span class="num">20</span>, cols=<span class="num">30</span>, resolution_m=<span class="num">0.5</span>))
+farm.<span class="fn">add_field</span>(field)
+
+field.<span class="fn">use_plugin</span>(StandardWheat)
+farm.<span class="fn">use_physics</span>(et0=<span class="kw">True</span>, radiation=<span class="kw">True</span>, erosion=<span class="kw">True</span>, sediment_transport=<span class="kw">True</span>)
+
+farm.<span class="fn">run</span>(days=<span class="num">90</span>)
+farm.<span class="fn">visualize</span>()  <span class="co"># opens http://localhost:7860</span></pre>
+    </div>
+
+    <p class="vcap cmt">// time-stepping, spatial state, terrain physics, sediment dynamics, Parquet logging, and WebGL 3D dashboard — handled.</p>
+  </div>
+</section>
+
+<!-- ── Features ── -->
+<section id="features">
+  <div class="wrap">
+    <p class="label">capabilities</p>
+    <h2>Everything a researcher needs.</h2>
+    <ul class="feature-list">
+      <li><span class="chk">✓</span><span class="feat-body"><span>Crop Simulation Engine</span><span class="desc">Phase-ordered @step decorator, time-stepped runtime</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Plugin Architecture</span><span class="desc">StandardWheat, StandardMaize, fully extensible</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Opt-In Physics</span><span class="desc">FAO-56 ET₀, Beer-Lambert radiation, RUSLE erosion</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Terrain Engine</span><span class="desc">Procedural, CSV, GeoTIFF; sub-metre resolution</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Sediment Dynamics</span><span class="desc">Mass-conserving D8 routing, geomorphological feedback</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Conservation Land Management</span><span class="desc">TiedRidges, VegetativeFilterStrip, ContourBund</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Weed Competition</span><span class="desc">Spread, water &amp; radiation suppression, Parquet logging</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Multi-Season Rotations</span><span class="desc">Soil state carries over between runs</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>WebGL 3D Dashboard</span><span class="desc">PBR rendering, LOD terrain, instanced plants at 60fps</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>GLTF / GLB Export</span><span class="desc">Blender &amp; Unreal Engine ready scenes</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>Parquet Logging</span><span class="desc">Every state variable, every timestep</span></span></li>
+      <li><span class="chk">✓</span><span class="feat-body"><span>MIT Licensed &amp; Citable</span><span class="desc">CITATION.cff, Zenodo-archived, JOSS-ready</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ── Docs ── -->
+<section id="docs">
+  <div class="wrap">
+    <h2>Read the source.</h2>
+
+    <div class="doc-grid">
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/getting_started/installation/" target="_blank" rel="noopener">
+        <p class="fname">getting_started</p>
+        <div class="title">installation.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/getting_started/quickstart/" target="_blank" rel="noopener">
+        <p class="fname">getting_started</p>
+        <div class="title">quickstart.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/reference/api/" target="_blank" rel="noopener">
+        <p class="fname">reference</p>
+        <div class="title">api.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/features/physics/" target="_blank" rel="noopener">
+        <p class="fname">features</p>
+        <div class="title">physics.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/features/terrain/" target="_blank" rel="noopener">
+        <p class="fname">features</p>
+        <div class="title">terrain.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/plugins/" target="_blank" rel="noopener">
+        <p class="fname">plugins</p>
+        <div class="title">plugins.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/tutorials/maize_dual_plot/" target="_blank" rel="noopener">
+        <p class="fname">tutorials</p>
+        <div class="title">maize_dual_plot.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/tutorials/conservation_agriculture/" target="_blank" rel="noopener">
+        <p class="fname">tutorials</p>
+        <div class="title">conservation_ag.md</div>
+        <div class="arrow">→</div>
+      </a>
+      <a class="doc-card" href="https://cropforge.readthedocs.io/en/latest/changelog/" target="_blank" rel="noopener">
+        <p class="fname">project</p>
+        <div class="title">changelog.md</div>
+        <div class="arrow">→</div>
+      </a>
+    </div>
+
+    <p class="footnote">// Full documentation at <a href="https://cropforge.readthedocs.io" target="_blank" rel="noopener">cropforge.readthedocs.io</a></p>
+  </div>
+</section>
+
+<!-- ── Changelog ── -->
+<section id="changelog">
+  <div class="wrap">
+    <h2>What shipped.</h2>
+
+    <div class="diff">
+      <div class="bar">
+        <span>CHANGELOG.md</span>
+        <span>v0.6.0 → v1.0.0</span>
+      </div>
+      <pre>
+<span class="ln ver">v1.0.0  — Community Release</span>
+<span class="ln add">+  Weed competition: spread, water &amp; radiation suppression</span>
+<span class="ln add">+  Planting density + farm.yield_summary() (kg/ha &amp; total)</span>
+<span class="ln add">+  Irrigation animation (enhanced-mode sprinkler)</span>
+<span class="ln add">+  Citation metadata (CITATION.cff), Zenodo, JOSS-ready</span>
+<span class="ln add">+  Community governance, issue templates</span>
+<span class="ln meta"> </span>
+<span class="ln ver">v0.9.5  — Visual Architecture Complete</span>
+<span class="ln add">+  First-party asset bundles, machinery animation</span>
+<span class="ln add">+  Stress/disease visualizations, enhanced rain particles</span>
+<span class="ln add">+  PBR rendering, morph targets, terrain-aware GLB export</span>
+<span class="ln meta"> </span>
+<span class="ln ver">v0.9.0  — Photorealistic PBR + GLTF Export</span>
+<span class="ln add">+  MeshStandardMaterial, shadows, sun-angle lighting</span>
+<span class="ln add">+  Plant stage architecture + ModelRegistry</span>
+<span class="ln add">+  Full .glb scene export (Blender / Unreal Engine)</span>
+<span class="ln meta"> </span>
+<span class="ln ver">v0.8.0  — Terrain Arc Completion</span>
+<span class="ln add">+  Sub-metre resolution (resolution_m param)</span>
+<span class="ln add">+  Sediment dynamics, mass conservation, D8 routing</span>
+<span class="ln add">+  Geomorphological feedback: elevation updates daily</span>
+<span class="ln add">+  LOD 3D renderer — 500×500 fields at 60 fps</span>
+<span class="ln add">+  TiedRidges, VegetativeFilterStrip land preparation</span>
+<span class="ln meta"> </span>
+<span class="ln ver">v0.7.0 / v0.6.0  — Physics &amp; Terrain Arc</span>
+<span class="ln add">+  Solar incidence engine, wind shadow, clod dynamics</span>
+<span class="ln add">+  Terrain engine (procedural, CSV, GeoTIFF)</span>
+<span class="ln add">+  D8 hydrology coupling, 3D dashboard modal</span>
+      </pre>
+    </div>
+
+    <p class="footnote">
+      // Full history at
+      <a href="https://cropforge.readthedocs.io/en/latest/changelog/" target="_blank" rel="noopener">readthedocs</a> ·
+      <a href="https://github.com/saswatsundar123/cropforge/releases" target="_blank" rel="noopener">GitHub Releases</a>
+    </p>
+  </div>
+</section>
+
+<!-- ── GitHub stats ── -->
+<section id="github">
+  <div class="wrap">
+    <h2>saswatsundar123/cropforge</h2>
+
+    <div class="gh-stats">
+      <div class="gh-stat str">
+        <div class="n" id="gh-stars">—</div>
+        <div class="l">stars</div>
+      </div>
+      <div class="gh-stat fk">
+        <div class="n" id="gh-forks">—</div>
+        <div class="l">forks</div>
+      </div>
+      <div class="gh-stat">
+        <div class="n" id="gh-issues">—</div>
+        <div class="l">open issues</div>
+      </div>
+      <div class="gh-stat">
+        <div class="n" id="gh-release">v1.0.0</div>
+        <div class="l">latest release</div>
+      </div>
+      <div class="gh-stat">
+        <div class="n" id="gh-license">MIT</div>
+        <div class="l">license</div>
+      </div>
+    </div>
+
+    <a class="gh-link" href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">
+      View on GitHub →
+    </a>
+
+    <p class="footnote">Live stats from api.github.com</p>
+  </div>
+</section>
+
+<!-- ── Philosophy + Community ── -->
+<section id="philosophy">
+  <div class="wrap">
+    <h2>Engineering before marketing.</h2>
+
+    <div class="philosophy">
+      <p>CropForge is an extensible, <strong>transparent</strong>, and <strong>reproducible runtime</strong> for crop simulation research. Every model is inspectable. Every assumption is explicit. Everything is open source.</p>
+      <p><span class="cmt">// No config files. No GUIs. Define your farm in Python — CropForge handles the rest.</span></p>
+    </div>
+
+    <div style="margin-top: 48px;">
+      <p class="label">community</p>
+      <div class="comm-grid">
+        <div class="comm-item">
+          <h3>GitHub</h3>
+          <a href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">saswatsundar123/cropforge</a>
+        </div>
+        <div class="comm-item">
+          <h3>Documentation</h3>
+          <a href="https://cropforge.readthedocs.io" target="_blank" rel="noopener">cropforge.readthedocs.io</a>
+        </div>
+        <div class="comm-item">
+          <h3>Cite</h3>
+          <a href="https://github.com/saswatsundar123/cropforge/blob/main/CITATION.cff" target="_blank" rel="noopener">CITATION.cff (Zenodo)</a>
+        </div>
+        <div class="comm-item">
+          <h3>Issues</h3>
+          <a href="https://github.com/saswatsundar123/cropforge/issues" target="_blank" rel="noopener">github.com/.../issues</a>
+        </div>
+        <div class="comm-item">
+          <h3>PyPI</h3>
+          <a href="https://pypi.org/project/cropforge/" target="_blank" rel="noopener">pypi.org/project/cropforge</a>
+        </div>
+        <div class="comm-item">
+          <h3>Contribute</h3>
+          <a href="https://github.com/saswatsundar123/cropforge/blob/main/CONTRIBUTING.md" target="_blank" rel="noopener">CONTRIBUTING.md</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About / Creator ── -->
+<section id="about">
+  <div class="wrap">
+    <p class="label">creator</p>
+    <h2>Built by one researcher, for all researchers.</h2>
+
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>CropForge was created by <strong>Saswat Sundar Rath</strong>, a researcher at <strong>ICAR-IARI Jharkhand</strong>, as an answer to a recurring problem — existing crop simulation tools were either closed-source, configuration-heavy, or too opaque to extend meaningfully.</p>
+        <p>The goal: a runtime that treats simulation as code, not configuration. Where every model, every parameter, and every assumption is explicit and inspectable. Where extending the physics means writing a Python class, not editing XML.</p>
+        <p class="cmt">// CropForge is MIT licensed and built in the open. Contributions, critique, and collaboration are welcome.</p>
+      </div>
+
+      <div class="about-links">
+        <div class="about-link-item">
+          <span class="about-label">contact</span>
+          <a href="mailto:saswatsundar123@gmail.com">saswatsundar123@gmail.com</a>
+        </div>
+        <div class="about-link-item">
+          <span class="about-label">institution</span>
+          <a href="https://www.icar.org.in" target="_blank" rel="noopener">ICAR-IARI Jharkhand</a>
+        </div>
+        <div class="about-link-item">
+          <span class="about-label">github</span>
+          <a href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">saswatsundar123/cropforge</a>
+        </div>
+        <div class="about-link-item">
+          <span class="about-label">license</span>
+          <span style="color:var(--fg2)">MIT — free for research &amp; commercial use</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="wrap">
+    <p class="q">the best model is the one you can inspect.</p>
+    <p class="prompt"><span class="p">~/cropforge ❯</span> <span class="cur">▋</span></p>
+    <p class="meta">MIT licensed · <a href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">saswatsundar123/cropforge</a></p>
+    <p class="meta">ICAR-IARI Jharkhand · Saswat Sundar Rath · 2026</p>
+    <p class="meta">
+      <a href="privacy.html">Privacy Policy</a> ·
+      <a href="terms.html">Terms of Use</a> ·
+      <a href="https://cropforge.readthedocs.io" target="_blank" rel="noopener">Documentation</a> ·
+      <a href="https://github.com/saswatsundar123/cropforge" target="_blank" rel="noopener">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<!-- tooltip for easter egg -->
+<span id="bubble" class="bubble" role="status" aria-live="polite"></span>
+
+<script src="main.js"></script>
+</body>
+</html>
+
+
